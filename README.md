@@ -81,7 +81,7 @@ Below are steps you can follow to complete each component of this project.
 
 Set environment variables `KEY` and `SECRET`.
 
-Run data_warehose.ipynb
+Run data_warehouse.ipynb
 
 ## Further work
 
