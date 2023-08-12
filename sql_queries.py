@@ -123,10 +123,10 @@ song_table_create = ("""
     CREATE TABLE IF NOT EXISTS songs
     (
         song_id     TEXT PRIMARY KEY ,
-        title       TEXT,
+        title       TEXT ,
         artist_id   TEXT ,
         year        SMALLINT,
-        duration    FLOAT4
+        duration    FLOAT
     );
 """)
 
@@ -136,8 +136,8 @@ artist_table_create = ("""
         artist_id   TEXT PRIMARY KEY ,
         name        TEXT,
         location    TEXT,
-        latitude    FLOAT4,
-        longitude   FLOAT4
+        latitude    FLOAT,
+        longitude   FLOAT
     ) ;
 """)
 
@@ -184,8 +184,8 @@ staging_songs_copy = ("""
 # FINAL TABLES
 
 songplay_table_insert = ("""
-    INSERT INTO songplays (start_time, user_id, level, song_id, artist_id, session_id, location, user_agent) SELECT
-        TIMESTAMP 'epoch' + (e.ts/1000 * INTERVAL '1 second'),
+    INSERT INTO songplays (start_time, user_id, level, song_id, artist_id, session_id, location, user_agent) 
+    SELECT TIMESTAMP 'epoch' + (e.ts/1000 * INTERVAL '1 second'),
         e.user_id,
         e.level,
         s.song_id,
